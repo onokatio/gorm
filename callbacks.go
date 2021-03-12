@@ -119,7 +119,7 @@ func (p *processor) Execute(db *DB) {
 		f(db)
 	}
 
-	db.Logger.Trace(stmt.Context, curTime, func() (string, int64) {
+	p.db.Logger.Trace(stmt.Context, curTime, func() (string, int64) {
 		return db.Dialector.Explain(stmt.SQL.String(), stmt.Vars...), db.RowsAffected
 	}, db.Error)
 
